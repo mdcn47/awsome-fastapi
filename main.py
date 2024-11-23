@@ -7,8 +7,7 @@ weak authentication mechanisms. The purpose is to highlight vulnerabilities
 for educational purposes.
 """
 
-import os
-from fastapi import FastAPI, Depends, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
@@ -48,6 +47,7 @@ def get_user(username: str):
 
 @app.get("/read_file")
 def read_file(file_path: str):
+    # pylint: disable=raise-missing-from
     """
     Endpoint to read the contents of a file.
 
@@ -64,7 +64,7 @@ def read_file(file_path: str):
         HTTPException: If the file cannot be read.
     """
     try:
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             return {"content": file.read()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -119,5 +119,5 @@ def secure_data(token: str = Query(...)):
     """
     if token == API_SECRET:
         return {"data": "Sensitive Data"}
-    else:
-        return JSONResponse(status_code=403, content={"message": "Forbidden"})
+
+    return JSONResponse(status_code=403, content={"message": "Forbidden"})
