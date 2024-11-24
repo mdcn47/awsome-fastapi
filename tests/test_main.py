@@ -6,6 +6,8 @@ defined in the `main` FastAPI app. The tests include checking responses for
 various endpoints under normal and edge-case scenarios.
 """
 
+# pylint: disable=wrong-import-position
+
 import sys
 import os
 from fastapi.testclient import TestClient
