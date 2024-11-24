@@ -3,7 +3,6 @@
 This project sets up a simple FastAPI application within a Docker container. It uses the official Python runtime and includes all necessary configurations to deploy a FastAPI app with Docker. The container will expose the app on port 80 and automatically run the FastAPI app on startup.
 
 ## Requirements
-
 - Docker
 - Python 3.12+
 - FastAPI
