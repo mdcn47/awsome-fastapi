@@ -1,0 +1,13 @@
+on:
+    push:
+      branches:
+        - main
+    workflow_dispatch:
+
+jobs:
+    terraform-apply-pipelines:
+        needs: terraform-apply-eks
+        uses: ./.github/workflows/terraform-apply-pipelines.yml
+        permissions:
+            contents: read
+        secrets: inherit
