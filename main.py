@@ -122,3 +122,4 @@ def secure_data(token: str = Query(...)):
 
     return JSONResponse(status_code=403, content={"message": "Forbidden"})
     #test comment to trigger workflow
+    #test2 comment to trigger workflow
